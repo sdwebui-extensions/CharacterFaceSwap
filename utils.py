@@ -6,10 +6,14 @@ from PIL import Image
 import hashlib
 import cv2
 from typing import Tuple
+from comfy.cli_args import args
+import os
 
 BBox = Tuple[int, int, int, int]
 
 models_dir =  comfy_paths.models_dir
+if args.just_ui:
+    models_dir = os.path.join(os.path.dirname(args.data_dir), 'models')
 
 # Tensor to PIL
 def tensor2pil(image):
